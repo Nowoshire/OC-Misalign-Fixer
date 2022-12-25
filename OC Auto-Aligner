@@ -381,7 +381,7 @@ TextBox.FocusLost:Connect(function ()
 	if typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) >= 0.001 then
 		TextBox.Text = tonumber(TextBox.Text)
 		TextBox.PlaceholderText = TextBox.Text
-	elseif tonumber(TextBox.Text) < 0.001 then
+	elseif typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.001 then
 		TextBox.Text = 0.001
 		TextBox.PlaceholderText = TextBox.Text
 	else
