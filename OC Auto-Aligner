@@ -1,240 +1,219 @@
--- Gui to Lua
--- Version: 3.2
+print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
+-- Create the GUIObjects
+--local CoreGui = game:GetService("CoreGui")
+local sg = Instance.new("ScreenGui", gethui())
+sg.Name = "Auto-Aligner"
+sg.ResetOnSpawn = false
+sg.Enabled = true
 
--- Instances:
-
-local AutoAligner = Instance.new("ScreenGui")
-local Container = Instance.new("Frame")
-local Frame = Instance.new("Frame")
-local UIListLayout = Instance.new("UIListLayout")
-local alignb = Instance.new("Frame")
-local color = Instance.new("Frame")
-local alignb_2 = Instance.new("TextButton")
-local roundv = Instance.new("Frame")
-local TextBox = Instance.new("TextBox")
-local TextLabel = Instance.new("TextLabel")
-local banner = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
-local buttons = Instance.new("Frame")
-local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
-local close = Instance.new("ImageButton")
-local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
-local minimize = Instance.new("ImageButton")
-local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
-local minbuttons = Instance.new("Frame")
-local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
-local close_2 = Instance.new("ImageButton")
-local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
-local expand = Instance.new("ImageButton")
-local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
-
---Properties:
-
-AutoAligner.Name = "Auto-Aligner"
-AutoAligner.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-AutoAligner.ResetOnSpawn = false
-
+local Container = Instance.new("Frame", sg)
 Container.Name = "Container"
-Container.Parent = AutoAligner
+Container.BackgroundTransparency = 0
 Container.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Container.BorderSizePixel = 0
-Container.Position = UDim2.new(0.200000003, 0, 0.400000006, 0)
-Container.Size = UDim2.new(0.119999997, 0, 0.140000001, 0)
+Container.Position = UDim2.new(0.2, 0, 0.4, 0)
+Container.Size = UDim2.new(0.12, 0, 0.14, 0)
+Container.Visible = true
 
-Frame.Parent = Container
+local purpleborder = Instance.new("UIStroke", Container)
+purpleborder.Name = "purpleborder"
+purpleborder.Color = Color3.fromRGB(40, 0, 100)
+purpleborder.Thickness = 2
+purpleborder.Transparency = 0.3
+purpleborder.Enabled = true
+
+local transpgrad = Instance.new("UIGradient", purpleborder)
+transpgrad.Name = "transpgrad"
+transpgrad.Rotation = 50
+transpgrad.Transparency = NumberSequence.new{
+	NumberSequenceKeypoint.new(0, 0),
+	NumberSequenceKeypoint.new(0.2, 0.4),
+	NumberSequenceKeypoint.new(1, 0.9)
+}
+transpgrad.Enabled = true
+
+local Frame = Instance.new("Frame", Container)
+Frame.Name = "Frame"
 Frame.AnchorPoint = Vector2.new(0, 1)
-Frame.BackgroundTransparency = 1.000
+Frame.BackgroundTransparency = 1
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0, 0, 1, 0)
-Frame.Size = UDim2.new(1, 0, 0.870000005, 0)
+Frame.Size = UDim2.new(1, 0, 0.87, 0)
 
-UIListLayout.Parent = Frame
-UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+local UIListLayout = Instance.new("UIListLayout", Frame)
+UIListLayout.Name = "UIListLayout"
 UIListLayout.Padding = UDim.new(0, 8)
+UIListLayout.FillDirection = Enum.FillDirection.Vertical
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.Name
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 
-alignb.Name = "alignb"
-alignb.Parent = Frame
-alignb.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-alignb.BorderSizePixel = 0
-alignb.LayoutOrder = 1
-alignb.Size = UDim2.new(0.699999988, 0, 0.25, 0)
+local _1alignb = Instance.new("Frame", Frame)
+_1alignb.Name = "1alignb"
+_1alignb.BackgroundColor3 = Color3.fromRGB(70,70,70)
+_1alignb.BorderSizePixel = 0
+_1alignb.Size = UDim2.new(0.7, 0, 0.25, 0)
+_1alignb.Visible = true
 
+local color = Instance.new("Frame", _1alignb)
 color.Name = "color"
-color.Parent = alignb
 color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
 color.BorderSizePixel = 0
 color.Position = UDim2.new(0, 0, 1, 0)
-color.Size = UDim2.new(1, 0, 0.119999997, 0)
+color.Size = UDim2.new(1, 0, 0.12, 0)
+color.Visible = true
 
-alignb_2.Name = "alignb"
-alignb_2.Parent = alignb
-alignb_2.AnchorPoint = Vector2.new(0, 0.5)
-alignb_2.BackgroundTransparency = 1.000
-alignb_2.BorderSizePixel = 0
-alignb_2.Position = UDim2.new(0, 0, 0.5, 0)
-alignb_2.Size = UDim2.new(1, 0, 0.899999976, 9)
-alignb_2.Font = Enum.Font.Unknown
-alignb_2.LineHeight = 1.200
-alignb_2.Text = "Align Parts"
-alignb_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-alignb_2.TextScaled = true
-alignb_2.TextWrapped = true
+local alignb = Instance.new("TextButton", _1alignb)
+alignb.Name = "alignb"
+alignb.AnchorPoint = Vector2.new(0, 0.5)
+alignb.BackgroundTransparency = 1
+alignb.BorderSizePixel = 0
+alignb.Position = UDim2.new(0, 0, 0.5, 0)
+alignb.Size = UDim2.new(1, 0, 0.9, 9)
+alignb.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
+alignb.LineHeight = 1.2
+alignb.Text = "Align Parts"
+alignb.TextColor3 = Color3.fromRGB(255, 255, 255)
+alignb.TextScaled = true
+alignb.Visible = true
 
-roundv.Name = "roundv"
-roundv.Parent = Frame
-roundv.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-roundv.BorderSizePixel = 0
-roundv.LayoutOrder = 2
-roundv.Size = UDim2.new(0.699999988, 0, 0.25, 0)
+local _2roundv = Instance.new("Frame", Frame)
+_2roundv.Name = "2roundv"
+_2roundv.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+_2roundv.BorderSizePixel = 0
+_2roundv.Size = UDim2.new(0.7, 0, 0.25, 0)
+_2roundv.Visible = true
 
-TextBox.Parent = roundv
+local TextBox = Instance.new("TextBox", _2roundv)
+TextBox.Name = "TextBox"
 TextBox.AnchorPoint = Vector2.new(1, 0.5)
 TextBox.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
 TextBox.BorderSizePixel = 0
 TextBox.Position = UDim2.new(1, 0, 0.5, 0)
-TextBox.Size = UDim2.new(0.5, 0, 0.899999976, 0)
-TextBox.Font = Enum.Font.Unknown
+TextBox.Size = UDim2.new(0.5, 0, 0.9, 0)
+TextBox.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
 TextBox.PlaceholderText = "0.005"
 TextBox.Text = "0.005"
 TextBox.TextColor3 = Color3.fromRGB(0, 200, 200)
 TextBox.TextScaled = true
-TextBox.TextWrapped = true
+TextBox.Visible = true
 
-TextLabel.Parent = roundv
+local TextLabel = Instance.new("TextLabel", _2roundv)
+TextLabel.Name = "TextLabel"
 TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-TextLabel.BackgroundTransparency = 1.000
+TextLabel.BackgroundTransparency = 1
 TextLabel.BorderSizePixel = 0
 TextLabel.Position = UDim2.new(0, 5, 0.5, 0)
-TextLabel.Size = UDim2.new(0.400000006, 0, 0.899999976, 0)
-TextLabel.Font = Enum.Font.Unknown
+TextLabel.Size = UDim2.new(0.4, 0, 0.9, 0)
+TextLabel.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
 TextLabel.Text = "Offset"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
-TextLabel.TextWrapped = true
+TextLabel.Visible = true
 
-banner.Name = "banner"
-banner.Parent = Frame
-banner.AnchorPoint = Vector2.new(0.5, 0)
-banner.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-banner.Size = UDim2.new(0.800000012, 0, 0.200000003, 0)
-banner.Font = Enum.Font.Unknown
-banner.Text = "Auto Aligner"
-banner.TextColor3 = Color3.fromRGB(255, 255, 255)
-banner.TextScaled = true
-banner.TextWrapped = true
+local _0banner = Instance.new("TextLabel", Frame)
+_0banner.Name = "0banner"
+_0banner.AnchorPoint = Vector2.new(0.5, 0)
+_0banner.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_0banner.Size = UDim2.new(0.8, 0, 0.2, 0)
+_0banner.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Bold)
+_0banner.Text = "Auto Aligner"
+_0banner.TextColor3 = Color3.fromRGB(255, 255, 255)
+_0banner.TextScaled = true
+_0banner.Visible = true
 
-UICorner.Parent = Frame
+local UICorner = Instance.new("UICorner", Frame)
+UICorner.CornerRadius = UDim.new(0, 8)
 
+local buttons = Instance.new("Frame", Container)
 buttons.Name = "buttons"
-buttons.Parent = Container
 buttons.AnchorPoint = Vector2.new(1, 0)
 buttons.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 buttons.BorderSizePixel = 0
 buttons.Position = UDim2.new(1, 0, 0, 0)
-buttons.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+buttons.Size = UDim2.new(0.2, 0, 0.2, 0)
+buttons.Visible = true
 
-UIAspectRatioConstraint.Parent = buttons
-UIAspectRatioConstraint.AspectRatio = 2.000
-UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
+local RectConstraint = Instance.new("UIAspectRatioConstraint", buttons)
+RectConstraint.Name = "UIAspectRatioConstraint"
+RectConstraint.AspectRatio = 2
+RectConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
+RectConstraint.DominantAxis = Enum.DominantAxis.Width
 
+local close = Instance.new("ImageButton", buttons)
 close.Name = "close"
-close.Parent = buttons
 close.AnchorPoint = Vector2.new(1, 0)
-close.BackgroundTransparency = 1.000
+close.BackgroundTransparency = 1
 close.BorderSizePixel = 0
 close.Position = UDim2.new(1, 0, 0, 0)
 close.Size = UDim2.new(0.5, 0, 1, 0)
+close.Visible = true
 close.Image = "rbxassetid://11907054176"
 
-UIAspectRatioConstraint_2.Parent = close
-UIAspectRatioConstraint_2.AspectType = Enum.AspectType.ScaleWithParentSize
-UIAspectRatioConstraint_2.DominantAxis = Enum.DominantAxis.Height
+local SqrConstraint0 = Instance.new("UIAspectRatioConstraint", close)
+SqrConstraint0.AspectRatio = 1
+SqrConstraint0.AspectType = Enum.AspectType.ScaleWithParentSize
+SqrConstraint0.DominantAxis = Enum.DominantAxis.Height
 
+local minimize = Instance.new("ImageButton", buttons)
 minimize.Name = "minimize"
-minimize.Parent = buttons
-minimize.BackgroundTransparency = 1.000
+minimize.AnchorPoint = Vector2.new(0, 0)
+minimize.BackgroundTransparency = 1
 minimize.BorderSizePixel = 0
+minimize.Position = UDim2.new(0, 0, 0, 0)
 minimize.Size = UDim2.new(0.5, 0, 1, 0)
+minimize.Visible = true
 minimize.Image = "rbxassetid://11907053864"
 
-UIAspectRatioConstraint_3.Parent = minimize
-UIAspectRatioConstraint_3.AspectType = Enum.AspectType.ScaleWithParentSize
-UIAspectRatioConstraint_3.DominantAxis = Enum.DominantAxis.Height
+local SqrConstraint1 = Instance.new("UIAspectRatioConstraint", minimize)
+SqrConstraint1.AspectRatio = 1
+SqrConstraint1.AspectType = Enum.AspectType.ScaleWithParentSize
+SqrConstraint1.DominantAxis = Enum.DominantAxis.Height
 
+local minbuttons = Instance.new("Frame", Container)
 minbuttons.Name = "minbuttons"
-minbuttons.Parent = Container
 minbuttons.AnchorPoint = Vector2.new(1, 0)
 minbuttons.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 minbuttons.BorderSizePixel = 0
 minbuttons.Position = UDim2.new(1, 0, 0, 0)
-minbuttons.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+minbuttons.Size = UDim2.new(0.2, 0, 0.2, 0)
 minbuttons.Visible = false
 
-UIAspectRatioConstraint_4.Parent = minbuttons
-UIAspectRatioConstraint_4.AspectRatio = 2.000
-UIAspectRatioConstraint_4.AspectType = Enum.AspectType.ScaleWithParentSize
+local RectConstraint0 = Instance.new("UIAspectRatioConstraint", minbuttons)
+RectConstraint0.Name = "UIAspectRatioConstraint"
+RectConstraint0.AspectRatio = 2
+RectConstraint0.AspectType = Enum.AspectType.ScaleWithParentSize
+RectConstraint0.DominantAxis = Enum.DominantAxis.Width
 
-close_2.Name = "close"
-close_2.Parent = minbuttons
-close_2.AnchorPoint = Vector2.new(1, 0)
-close_2.BackgroundTransparency = 1.000
-close_2.BorderSizePixel = 0
-close_2.Position = UDim2.new(1, 0, 0, 0)
-close_2.Size = UDim2.new(0.5, 0, 1, 0)
-close_2.Image = "rbxassetid://11907054176"
+local close1 = Instance.new("ImageButton", minbuttons)
+close1.Name = "close"
+close1.AnchorPoint = Vector2.new(1, 0)
+close1.BackgroundTransparency = 1
+close1.BorderSizePixel = 0
+close1.Position = UDim2.new(1, 0, 0, 0)
+close1.Size = UDim2.new(0.5, 0, 1, 0)
+close1.Image = "rbxassetid://11907054176"
 
-UIAspectRatioConstraint_5.Parent = close_2
-UIAspectRatioConstraint_5.AspectType = Enum.AspectType.ScaleWithParentSize
-UIAspectRatioConstraint_5.DominantAxis = Enum.DominantAxis.Height
+local SqrConstraint2 = Instance.new("UIAspectRatioConstraint", close1)
+SqrConstraint2.AspectRatio = 1
+SqrConstraint2.AspectType = Enum.AspectType.ScaleWithParentSize
+SqrConstraint2.DominantAxis = Enum.DominantAxis.Height
 
+local expand = Instance.new("ImageButton", minbuttons)
 expand.Name = "expand"
-expand.Parent = minbuttons
-expand.BackgroundTransparency = 1.000
+expand.AnchorPoint = Vector2.new(0, 0)
+expand.BackgroundTransparency = 1
 expand.BorderSizePixel = 0
+expand.Position = UDim2.new(0, 0, 0, 0)
 expand.Size = UDim2.new(0.5, 0, 1, 0)
 expand.Image = "rbxassetid://11907965976"
 
-UIAspectRatioConstraint_6.Parent = expand
-UIAspectRatioConstraint_6.AspectType = Enum.AspectType.ScaleWithParentSize
-UIAspectRatioConstraint_6.DominantAxis = Enum.DominantAxis.Height
+local SqrConstraint3 = Instance.new("UIAspectRatioConstraint", expand)
+SqrConstraint3.AspectRatio = 1
+SqrConstraint3.AspectType = Enum.AspectType.ScaleWithParentSize
+SqrConstraint3.DominantAxis = Enum.DominantAxis.Height
 
--- Scripts:
-print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
-
-script.Parent = gethui() or game:GetService("CoreGui") or game.Players.LocalPlayer.PlayerGui -- if executor does not support gethui() then use CoreGui, if still no then PlayerGui
-
--- Variables
-local sg = script.Parent
-local Container = sg.Container
-local purpleborder =  Container.purpleborder
-local transpgrad = purpleborder.transpgrad
-local Frame = Container.Frame
-local UIListLayout = Frame.UIListLayout
-local alignbframe = Frame.alignb
-local color = alignbframe.color
-local alignb = alignbframe.alignb
-local roundv = Frame.roundv
-local TextBox = roundv.TextBox
-local TextLabel = roundv.TextLabel
-local banner = Frame.banner
-local UICorner = Frame.UICorner
-local buttons = Container.buttons
-local RectConstraint = buttons.UIAspectRatioConstraint
-local close = buttons.close
-local SqrConstraint0 = close.UIAspectRatioConstraint
-local minimize = buttons.minimize
-local SqrConstraint1 =  minimize.UIAspectRatioConstraint
-local minbuttons = Container.minbuttons
-local RectConstraint0 = minbuttons.UIAspectRatioConstraint
-local close1 = minbuttons.close
-local SqrConstraint2 = close1.UIAspectRatioConstraint
-local expand = minbuttons.expand
-local SqrConstraint3 = expand.UIAspectRatioConstraint
-	
--- Script
--- Dragger 
+-- Dragger
 local UIS = game:GetService('UserInputService')
 local frame = sg.Container
 local dragToggle = nil
@@ -244,7 +223,8 @@ local startPos = nil
 
 local function updateInput(input)
 	local delta = input.Position - dragStart
-	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	--game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
 	frame.Position = position
 end
@@ -307,7 +287,7 @@ alignb.Activated:Connect(function ()
 	color.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
 	-- Sanity Checks.
 	if typeof(tonumber(TextBox.Text)) ~= "number" 
-		or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
+	or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
 
 	-- Return an editable obby
 	local function editable_obby (list)
@@ -340,8 +320,8 @@ alignb.Activated:Connect(function ()
 			for _, part in pairs(PartTypeFolder:GetChildren()) do
 				if part:IsA("BasePart") then
 					if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
-						or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
-						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
+					or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
+					or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
 						table.insert(MovePartTable[1], {
 							[1] = part,
 							[2] = CFrame.new(Vector3.new(
