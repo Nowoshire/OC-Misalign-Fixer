@@ -1,7 +1,6 @@
 print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
 -- Create the GUIObjects
---local CoreGui = game:GetService("CoreGui")
-local sg = Instance.new("ScreenGui", gethui())
+local sg = Instance.new("ScreenGui", gethui() or game:GetService("CoreGui"))
 sg.Name = "Auto-Aligner"
 sg.ResetOnSpawn = false
 sg.Enabled = true
