@@ -1,0 +1,396 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local AutoAligner = Instance.new("ScreenGui")
+local Container = Instance.new("Frame")
+local Frame = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+local alignb = Instance.new("Frame")
+local color = Instance.new("Frame")
+local alignb_2 = Instance.new("TextButton")
+local roundv = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local TextLabel = Instance.new("TextLabel")
+local banner = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local buttons = Instance.new("Frame")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local close = Instance.new("ImageButton")
+local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+local minimize = Instance.new("ImageButton")
+local UIAspectRatioConstraint_3 = Instance.new("UIAspectRatioConstraint")
+local minbuttons = Instance.new("Frame")
+local UIAspectRatioConstraint_4 = Instance.new("UIAspectRatioConstraint")
+local close_2 = Instance.new("ImageButton")
+local UIAspectRatioConstraint_5 = Instance.new("UIAspectRatioConstraint")
+local expand = Instance.new("ImageButton")
+local UIAspectRatioConstraint_6 = Instance.new("UIAspectRatioConstraint")
+
+--Properties:
+
+AutoAligner.Name = "Auto-Aligner"
+AutoAligner.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+AutoAligner.ResetOnSpawn = false
+
+Container.Name = "Container"
+Container.Parent = AutoAligner
+Container.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Container.BorderSizePixel = 0
+Container.Position = UDim2.new(0.200000003, 0, 0.400000006, 0)
+Container.Size = UDim2.new(0.119999997, 0, 0.140000001, 0)
+
+Frame.Parent = Container
+Frame.AnchorPoint = Vector2.new(0, 1)
+Frame.BackgroundTransparency = 1.000
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 1, 0)
+Frame.Size = UDim2.new(1, 0, 0.870000005, 0)
+
+UIListLayout.Parent = Frame
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+UIListLayout.Padding = UDim.new(0, 8)
+
+alignb.Name = "alignb"
+alignb.Parent = Frame
+alignb.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+alignb.BorderSizePixel = 0
+alignb.LayoutOrder = 1
+alignb.Size = UDim2.new(0.699999988, 0, 0.25, 0)
+
+color.Name = "color"
+color.Parent = alignb
+color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+color.BorderSizePixel = 0
+color.Position = UDim2.new(0, 0, 1, 0)
+color.Size = UDim2.new(1, 0, 0.119999997, 0)
+
+alignb_2.Name = "alignb"
+alignb_2.Parent = alignb
+alignb_2.AnchorPoint = Vector2.new(0, 0.5)
+alignb_2.BackgroundTransparency = 1.000
+alignb_2.BorderSizePixel = 0
+alignb_2.Position = UDim2.new(0, 0, 0.5, 0)
+alignb_2.Size = UDim2.new(1, 0, 0.899999976, 9)
+alignb_2.Font = Enum.Font.Unknown
+alignb_2.LineHeight = 1.200
+alignb_2.Text = "Align Parts"
+alignb_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+alignb_2.TextScaled = true
+alignb_2.TextWrapped = true
+
+roundv.Name = "roundv"
+roundv.Parent = Frame
+roundv.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+roundv.BorderSizePixel = 0
+roundv.LayoutOrder = 2
+roundv.Size = UDim2.new(0.699999988, 0, 0.25, 0)
+
+TextBox.Parent = roundv
+TextBox.AnchorPoint = Vector2.new(1, 0.5)
+TextBox.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(1, 0, 0.5, 0)
+TextBox.Size = UDim2.new(0.5, 0, 0.899999976, 0)
+TextBox.Font = Enum.Font.Unknown
+TextBox.PlaceholderText = "0.005"
+TextBox.Text = "0.005"
+TextBox.TextColor3 = Color3.fromRGB(0, 200, 200)
+TextBox.TextScaled = true
+TextBox.TextWrapped = true
+
+TextLabel.Parent = roundv
+TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 5, 0.5, 0)
+TextLabel.Size = UDim2.new(0.400000006, 0, 0.899999976, 0)
+TextLabel.Font = Enum.Font.Unknown
+TextLabel.Text = "Offset"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextWrapped = true
+
+banner.Name = "banner"
+banner.Parent = Frame
+banner.AnchorPoint = Vector2.new(0.5, 0)
+banner.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+banner.Size = UDim2.new(0.800000012, 0, 0.200000003, 0)
+banner.Font = Enum.Font.Unknown
+banner.Text = "Auto Aligner"
+banner.TextColor3 = Color3.fromRGB(255, 255, 255)
+banner.TextScaled = true
+banner.TextWrapped = true
+
+UICorner.Parent = Frame
+
+buttons.Name = "buttons"
+buttons.Parent = Container
+buttons.AnchorPoint = Vector2.new(1, 0)
+buttons.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+buttons.BorderSizePixel = 0
+buttons.Position = UDim2.new(1, 0, 0, 0)
+buttons.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+
+UIAspectRatioConstraint.Parent = buttons
+UIAspectRatioConstraint.AspectRatio = 2.000
+UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
+
+close.Name = "close"
+close.Parent = buttons
+close.AnchorPoint = Vector2.new(1, 0)
+close.BackgroundTransparency = 1.000
+close.BorderSizePixel = 0
+close.Position = UDim2.new(1, 0, 0, 0)
+close.Size = UDim2.new(0.5, 0, 1, 0)
+close.Image = "rbxassetid://11907054176"
+
+UIAspectRatioConstraint_2.Parent = close
+UIAspectRatioConstraint_2.AspectType = Enum.AspectType.ScaleWithParentSize
+UIAspectRatioConstraint_2.DominantAxis = Enum.DominantAxis.Height
+
+minimize.Name = "minimize"
+minimize.Parent = buttons
+minimize.BackgroundTransparency = 1.000
+minimize.BorderSizePixel = 0
+minimize.Size = UDim2.new(0.5, 0, 1, 0)
+minimize.Image = "rbxassetid://11907053864"
+
+UIAspectRatioConstraint_3.Parent = minimize
+UIAspectRatioConstraint_3.AspectType = Enum.AspectType.ScaleWithParentSize
+UIAspectRatioConstraint_3.DominantAxis = Enum.DominantAxis.Height
+
+minbuttons.Name = "minbuttons"
+minbuttons.Parent = Container
+minbuttons.AnchorPoint = Vector2.new(1, 0)
+minbuttons.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+minbuttons.BorderSizePixel = 0
+minbuttons.Position = UDim2.new(1, 0, 0, 0)
+minbuttons.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+minbuttons.Visible = false
+
+UIAspectRatioConstraint_4.Parent = minbuttons
+UIAspectRatioConstraint_4.AspectRatio = 2.000
+UIAspectRatioConstraint_4.AspectType = Enum.AspectType.ScaleWithParentSize
+
+close_2.Name = "close"
+close_2.Parent = minbuttons
+close_2.AnchorPoint = Vector2.new(1, 0)
+close_2.BackgroundTransparency = 1.000
+close_2.BorderSizePixel = 0
+close_2.Position = UDim2.new(1, 0, 0, 0)
+close_2.Size = UDim2.new(0.5, 0, 1, 0)
+close_2.Image = "rbxassetid://11907054176"
+
+UIAspectRatioConstraint_5.Parent = close_2
+UIAspectRatioConstraint_5.AspectType = Enum.AspectType.ScaleWithParentSize
+UIAspectRatioConstraint_5.DominantAxis = Enum.DominantAxis.Height
+
+expand.Name = "expand"
+expand.Parent = minbuttons
+expand.BackgroundTransparency = 1.000
+expand.BorderSizePixel = 0
+expand.Size = UDim2.new(0.5, 0, 1, 0)
+expand.Image = "rbxassetid://11907965976"
+
+UIAspectRatioConstraint_6.Parent = expand
+UIAspectRatioConstraint_6.AspectType = Enum.AspectType.ScaleWithParentSize
+UIAspectRatioConstraint_6.DominantAxis = Enum.DominantAxis.Height
+
+-- Scripts:
+print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
+
+script.Parent = gethui() or game:GetService("CoreGui") or game.Players.LocalPlayer.PlayerGui -- if executor does not support gethui() then use CoreGui, if still no then PlayerGui
+
+-- Variables
+local sg = script.Parent
+local Container = sg.Container
+local purpleborder =  Container.purpleborder
+local transpgrad = purpleborder.transpgrad
+local Frame = Container.Frame
+local UIListLayout = Frame.UIListLayout
+local alignbframe = Frame.alignb
+local color = alignbframe.color
+local alignb = alignbframe.alignb
+local roundv = Frame.roundv
+local TextBox = roundv.TextBox
+local TextLabel = roundv.TextLabel
+local banner = Frame.banner
+local UICorner = Frame.UICorner
+local buttons = Container.buttons
+local RectConstraint = buttons.UIAspectRatioConstraint
+local close = buttons.close
+local SqrConstraint0 = close.UIAspectRatioConstraint
+local minimize = buttons.minimize
+local SqrConstraint1 =  minimize.UIAspectRatioConstraint
+local minbuttons = Container.minbuttons
+local RectConstraint0 = minbuttons.UIAspectRatioConstraint
+local close1 = minbuttons.close
+local SqrConstraint2 = close1.UIAspectRatioConstraint
+local expand = minbuttons.expand
+local SqrConstraint3 = expand.UIAspectRatioConstraint
+	
+-- Script
+-- Dragger 
+local UIS = game:GetService('UserInputService')
+local frame = sg.Container
+local dragToggle = nil
+local dragSpeed = 0.4
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+	local delta = input.Position - dragStart
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	--game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+	frame.Position = position
+end
+
+frame.InputBegan:Connect(function(input)
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+		dragToggle = true
+		dragStart = input.Position
+		startPos = frame.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragToggle = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		if dragToggle then
+			updateInput(input)
+		end
+	end
+end)
+
+-- Close and Minimize Buttons
+close.Activated:Connect(function()
+	sg:Destroy()
+	script:Destroy()
+end)
+close1.Activated:Connect(function()
+	sg:Destroy()
+	script:Destroy()
+end)
+
+local as = buttons.AbsoluteSize
+minimize.Activated:Connect(function()
+	Frame.Visible = false
+	buttons.Visible = false
+	minbuttons.Visible = true
+	game:GetService('TweenService'):Create(Container, TweenInfo.new(0.6, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, buttons.AbsoluteSize.X + 10, 0, buttons.AbsoluteSize.Y + 10)}):Play()
+	minbuttons.Size = UDim2.new(0, as.X, 0, as.Y)
+	game:GetService('TweenService'):Create(minbuttons, TweenInfo.new(0.6, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {AnchorPoint = Vector2.new(0.5, 0.5)}):Play()
+	game:GetService('TweenService'):Create(minbuttons, TweenInfo.new(0.6, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+end)
+
+local ogsize0 = Container.Size
+local ogsize1 = minbuttons.Size
+expand.Activated:Connect(function()
+	Frame.Visible = true
+	buttons.Visible = true
+	minbuttons.Visible = false
+	game:GetService('TweenService'):Create(Container, TweenInfo.new(0.6, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = ogsize0}):Play()
+	minbuttons.Size = UDim2.new(ogsize1.X, 0, ogsize1.Y, 0)
+	minbuttons.AnchorPoint = Vector2.new(1, 0)
+	minbuttons.Position = UDim2.new(1, 0, 0, 0)
+end)
+
+alignb.Activated:Connect(function ()
+	color.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
+	-- Sanity Checks.
+	if typeof(tonumber(TextBox.Text)) ~= "number" 
+		or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
+
+	-- Return an editable obby
+	local function editable_obby (list)
+		local lp = game:GetService("Players").LocalPlayer
+		if (lp.PlayerGui:FindFirstChild("CurrentObby").Value == nil or lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name == lp.Name) and lp.PlayerGui:FindFirstChild("CanEdit").Value == true then
+			return lp.Name
+		elseif lp.PlayerGui:FindFirstChild("CanEdit").Value == false then
+			return nil
+		end
+		for _, whitelisted in pairs(list) do
+			if whitelisted == lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name then
+				return lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name
+			end
+		end
+		return lp.Name
+	end
+
+	local obby = editable_obby(game:GetService("ReplicatedStorage").Events.GetWhitelists:InvokeServer())
+	if obby == nil then
+		color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+		warn("::NAA:: -- No obby to align parts in.")
+		return
+	end
+
+	-- Align Parts in obby.
+	print("::NAA:: -- Aligning Parts in "..obby.."'s Obby.")
+	for _, PartTypeFolder in pairs(game.Workspace.Obbies[obby].Items:GetChildren()) do
+		if PartTypeFolder:IsA("Folder") then
+			local MovePartTable = {[1] = {}}
+			for _, part in pairs(PartTypeFolder:GetChildren()) do
+				if part:IsA("BasePart") then
+					if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
+						or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
+						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
+						table.insert(MovePartTable[1], {
+							[1] = part,
+							[2] = CFrame.new(Vector3.new(
+								math.round(part.Position.X/TextBox.Text)*TextBox.Text,
+								math.round(part.Position.Y/TextBox.Text)*TextBox.Text,
+								math.round(part.Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part.Rotation.X), math.rad(part.Rotation.Y), math.rad(part.Rotation.Z)),
+							[3] = part.Size
+						})
+						if part.Name == "Moving Part" then -- Additional data for moving parts
+							table.insert(MovePartTable[1][#MovePartTable[1]], {
+								[1] = Vector3.new(
+									math.round(part.m1.Value.X/TextBox.Text)*TextBox.Text,
+									math.round(part.m1.Value.Y/TextBox.Text)*TextBox.Text,
+									math.round(part.m1.Value.Z/TextBox.Text)*TextBox.Text),
+								[2] = Vector3.new(
+									math.round(part.m2.Value.X/TextBox.Text)*TextBox.Text,
+									math.round(part.m2.Value.Y/TextBox.Text)*TextBox.Text,
+									math.round(part.m2.Value.Z/TextBox.Text)*TextBox.Text)
+							})
+						end
+					end
+				end
+			end
+			if #MovePartTable[1] > 0 then
+				game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
+			end
+			local function sses(pluralword) -- Truss(es)!!!
+				if string.lower(string.sub(pluralword, string.len(pluralword)-1)) == "ss" then
+					return pluralword.."es"
+				else
+					return pluralword
+				end 
+			end
+			print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
+		end
+	end
+	color.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
+	task.wait(1)
+	color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+end)
+
+TextBox.FocusLost:Connect(function ()
+	if typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) >= 0.001 then
+		TextBox.Text = tonumber(TextBox.Text)
+		TextBox.PlaceholderText = TextBox.Text
+	elseif tonumber(TextBox.Text) < 0.001 then
+		TextBox.Text = 0.001
+		TextBox.PlaceholderText = TextBox.Text
+	else
+		TextBox.Text = TextBox.PlaceholderText
+	end
+end)
