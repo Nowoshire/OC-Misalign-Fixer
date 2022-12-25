@@ -229,14 +229,19 @@ local function updateInput(input)
 	frame.Position = position
 end
 
+local tween1 = game:GetService('TweenService'):Create(transpgrad, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 230})
+local tween2 = game:GetService('TweenService'):Create(transpgrad, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 50})
 frame.InputBegan:Connect(function(input)
 	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
 		dragToggle = true
 		dragStart = input.Position
 		startPos = frame.Position
+		
+		tween1:Play()
 		input.Changed:Connect(function()
 			if input.UserInputState == Enum.UserInputState.End then
 				dragToggle = false
+				tween2:Play()
 			end
 		end)
 	end
@@ -343,6 +348,15 @@ alignb.Activated:Connect(function ()
 							})
 						end
 					end
+				elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then
+					table.insert(MovePartTable[1], {
+						[1] = part:FindFirstChild(part.Name),
+						[2] = CFrame.new(Vector3.new(
+							math.round(part:FindFirstChild(part.Name).Position.X/TextBox.Text)*TextBox.Text,
+							math.round(part:FindFirstChild(part.Name).Position.Y/TextBox.Text)*TextBox.Text,
+							math.round(part:FindFirstChild(part.Name).Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part:FindFirstChild(part.Name).Rotation.X), math.rad(part:FindFirstChild(part.Name).Rotation.Y), math.rad(part:FindFirstChild(part.Name).Rotation.Z)),
+						[3] = part:FindFirstChild(part.Name).Size
+					})
 				end
 			end
 			if #MovePartTable[1] > 0 then
