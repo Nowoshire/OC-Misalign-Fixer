@@ -32,10 +32,10 @@ Container.BackgroundTransparency = 0
 Container.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Container.BorderSizePixel = 0
 Container.Position = UDim2.new(0.2, 0, 0.4, 0)
-Container.Size = UDim2.new(0.12, 0, 0.14, 0)
+Container.Size = UDim2.new(0.11, 0, 0.14, 0)
 
 local RectConstraint = Instance.new("UIAspectRatioConstraint", Container)
-RectConstraint.AspectRatio = 1.75
+RectConstraint.AspectRatio = 1.6
 RectConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
 
 local purpleborder = Instance.new("UIStroke", Container)
@@ -170,10 +170,10 @@ ScrollingFrame.ZIndex = 0
 ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.XY
 ScrollingFrame.CanvasSize = UDim2.new(0, 0, 3, 0)
 ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(20, 20, 20)
-ScrollingFrame.ScrollBarThickness = 8
+ScrollingFrame.ScrollBarThickness = 10
 
 local UIListLayout1 = Instance.new("UIListLayout", ScrollingFrame)
-UIListLayout1.Padding = UDim.new(0, 8)
+UIListLayout1.Padding = UDim.new(0, 10)
 UIListLayout1.FillDirection = Enum.FillDirection.Vertical
 UIListLayout1.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout1.SortOrder = Enum.SortOrder.Name
