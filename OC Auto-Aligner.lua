@@ -1,3 +1,4 @@
+print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
 -- Create the GUIObjects
 local function sgparent()
 	local success = pcall(function()
@@ -19,8 +20,6 @@ local function sgparent()
 		end
 	end
 end
-
-print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
 local sg = Instance.new("ScreenGui", sgparent())
 sg.Name = "Auto-Aligner"
 sg.ResetOnSpawn = false
@@ -41,7 +40,7 @@ RectConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
 local purpleborder = Instance.new("UIStroke", Container)
 purpleborder.Name = "purpleborder"
 purpleborder.Color = Color3.fromRGB(40, 0, 100)
-purpleborder.Thickness = 2
+purpleborder.Thickness = 2.5
 purpleborder.Transparency = 0.3
 
 local transpgrad = Instance.new("UIGradient", purpleborder)
@@ -148,7 +147,7 @@ parttypeframe.ZIndex = 0
 local purpleborder1 = Instance.new("UIStroke", parttypeframe)
 purpleborder1.Name = "purpleborder"
 purpleborder1.Color = Color3.fromRGB(40, 0, 100)
-purpleborder1.Thickness = 2
+purpleborder1.Thickness = 2.5
 purpleborder1.Transparency = 0.3
 
 local transpgrad1 = Instance.new("UIGradient", purpleborder1)
@@ -482,7 +481,7 @@ alignb.Activated:Connect(function ()
 							})
 						end
 					end
-				elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks, which are models.
+				elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks and potentially other stuff, which are models.
 					table.insert(MovePartTable[1], {
 						[1] = part:FindFirstChild(part.Name),
 						[2] = CFrame.new(Vector3.new(
@@ -493,9 +492,7 @@ alignb.Activated:Connect(function ()
 					})
 				end
 			end
-			if #MovePartTable[1] > 0 then
-				game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
-			end
+
 			local function sses(pluralword) -- Truss(es)!!!
 				if string.lower(string.sub(pluralword, string.len(pluralword)-1)) == "ss" then
 					return pluralword.."es"
@@ -503,7 +500,14 @@ alignb.Activated:Connect(function ()
 					return pluralword
 				end 
 			end
-			print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
+			
+			if #MovePartTable[1] > 0 then
+				
+				game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
+				print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
+			else
+				print("::NAA:: -- No misaligned "..sses(PartTypeFolder.Name).." to align")
+			end
 		end
 	end
 	color.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
@@ -522,4 +526,9 @@ TextBox.FocusLost:Connect(function ()
 	else
 		TextBox.Text = TextBox.PlaceholderText
 	end
+end)
+
+-- Funky Scroll Effect
+ScrollingFrame:GetPropertyChangedSignal("CanvasPosition"):Connect(function ()
+	transpgrad1.Rotation = 130 * (1 + ScrollingFrame.CanvasPosition.Y/(ScrollingFrame.AbsoluteSize.Y*ScrollingFrame.CanvasSize.Y.Scale))
 end)
