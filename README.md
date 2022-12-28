@@ -6,7 +6,7 @@ Auto-Aligner is a QoL enhancement exploit for the Roblox experience, [Obby Creat
 ## Usage/Execution
 Simply run this one-liner!
 ```lua
-  loadstring(game:HttpGet("https://raw.githubusercontent.com/ZxhenusZenoix/Obby-Creator-Scripts/main/OC%20Auto-Aligner"))()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/ZxhenusZenoix/Obby-Creator-Scripts/main/OC%20Auto-Aligner.lua"))()
 ```
 
 ## FaQ
