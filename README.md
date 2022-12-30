@@ -2,6 +2,7 @@
 Auto-Aligner is a QoL enhancement exploit for the Roblox experience, [Obby Creator](https://rblx.games/2913303231 "Roblox - Obby Creator"). This project is inspired by [Gabe616's OCPlus](https://github.com/Gabe616/OCPlus "GitHub").
 
 * Join the [OC+ Server](https://discord.gg/Mpw6b7vQfJ "Discord Invite"), as I probably won't be creating my own.
+* NOTE: this will rarely get updated unless i get randomly motivated or it breaks
 
 ## Usage/Execution
 Simply run this one-liner!
