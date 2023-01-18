@@ -18,8 +18,7 @@ Nope! [mario118118](https://rblx.name/29444141 "Roblox User Profile - mario11811
 Me, Nowoshire.
 
 ### Q: The script doesn't work!
-Please ensure that you are using an executor that supports functions like ```gethui()```, if the issue persists, lmk on the OC+ Server with an attachment of the F9 Dev Console.
-
+Please ensure that you are using an executor that supports functions like ```gethui()```, if the issue is not related to an executor limitation please lmk on the OC+ server.
 ## Credits
 #### Gabe616 (aka GABA)
 * Inspired me to create this project
