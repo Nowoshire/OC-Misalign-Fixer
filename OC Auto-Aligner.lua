@@ -1,4 +1,5 @@
 print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
+local lp = game:GetService("Players").LocalPlayer
 -- Create the GUIObjects
 local function sgparent()
 	local success = pcall(function()
@@ -16,10 +17,13 @@ local function sgparent()
 			return game:GetService("CoreGui")
 		else 
 			warn("::NAA:: -- Lacking permission 1, using PlayerGui; YOU MAY BE VULNERABLE TO DETECTION!")
-			return game:GetService("Players").LocalPlayer.PlayerGui
+			return lp.PlayerGui
 		end
 	end
 end
+
+lp.PlayerGui.LocalOutput:Fire("Nowoshire's Auto Aligner loaded successfully!", Color3.fromRGB(50, 255, 255))
+
 local sg = Instance.new("ScreenGui", sgparent())
 sg.Name = "Auto-Aligner"
 sg.ResetOnSpawn = false
@@ -31,10 +35,10 @@ Container.BackgroundTransparency = 0
 Container.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Container.BorderSizePixel = 0
 Container.Position = UDim2.new(0.2, 0, 0.4, 0)
-Container.Size = UDim2.new(0.11, 0, 0.14, 0)
+Container.Size = UDim2.new(0.11, 0, 0.3, 0)
 
 local RectConstraint = Instance.new("UIAspectRatioConstraint", Container)
-RectConstraint.AspectRatio = 1.6
+RectConstraint.AspectRatio = 1.4
 RectConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
 
 local purpleborder = Instance.new("UIStroke", Container)
@@ -60,7 +64,7 @@ Frame.Position = UDim2.new(0, 0, 1, 0)
 Frame.Size = UDim2.new(1, 0, 0.87, 0)
 
 local UIListLayout = Instance.new("UIListLayout", Frame)
-UIListLayout.Padding = UDim.new(0, 8)
+UIListLayout.Padding = UDim.new(0, 6)
 UIListLayout.FillDirection = Enum.FillDirection.Vertical
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -71,7 +75,7 @@ alignbf.Name = "alignbf"
 alignbf.BackgroundColor3 = Color3.fromRGB(70,70,70)
 alignbf.BorderSizePixel = 0
 alignbf.LayoutOrder = 1
-alignbf.Size = UDim2.new(0.7, 0, 0.25, 0)
+alignbf.Size = UDim2.new(0.7, 0, 0.16, 0)
 
 local color = Instance.new("Frame", alignbf)
 color.Name = "color"
@@ -93,12 +97,39 @@ alignb.Text = "Align Parts"
 alignb.TextColor3 = Color3.fromRGB(255, 255, 255)
 alignb.TextScaled = true
 
+local alignsbf = Instance.new("Frame", Frame)
+alignsbf.Name = "alignsbf"
+alignsbf.BackgroundColor3 = Color3.fromRGB(70,70,70)
+alignsbf.BorderSizePixel = 0
+alignsbf.LayoutOrder = 2
+alignsbf.Size = UDim2.new(0.7, 0, 0.16, 0)
+
+local color0 = Instance.new("Frame", alignsbf)
+color0.Name = "color"
+color0.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+color0.BorderSizePixel = 0
+color0.Position = UDim2.new(0, 0, 1, 0)
+color0.Size = UDim2.new(1, 0, 0.12, 0)
+
+local alignsb = Instance.new("TextButton", alignsbf)
+alignsb.Name = "alignsb"
+alignsb.AnchorPoint = Vector2.new(0, 0.5)
+alignsb.BackgroundTransparency = 1
+alignsb.BorderSizePixel = 0
+alignsb.Position = UDim2.new(0, 0, 0.5, 0)
+alignsb.Size = UDim2.new(1, 0, 0.9, 9)
+alignsb.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
+alignsb.LineHeight = 1.2
+alignsb.Text = "Align Selected"
+alignsb.TextColor3 = Color3.fromRGB(255, 255, 255)
+alignsb.TextScaled = true
+
 local roundv = Instance.new("Frame", Frame)
 roundv.Name = "roundv"
 roundv.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 roundv.BorderSizePixel = 0
-roundv.LayoutOrder = 2
-roundv.Size = UDim2.new(0.7, 0, 0.25, 0)
+roundv.LayoutOrder = 3
+roundv.Size = UDim2.new(0.7, 0, 0.16, 0)
 
 local TextBox = Instance.new("TextBox", roundv)
 TextBox.AnchorPoint = Vector2.new(1, 0.5)
@@ -129,9 +160,10 @@ banner.AnchorPoint = Vector2.new(0.5, 0)
 banner.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 banner.BorderSizePixel = 0
 banner.LayoutOrder = 0
-banner.Size = UDim2.new(0.8, 0, 0.2, 0)
+banner.RichText = true
+banner.Size = UDim2.new(0.7, 0, 0.25, 0)
 banner.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Bold)
-banner.Text = "Auto Aligner"
+banner.Text = 'Auto Aligner<br/><font color="rgb(200,200,200)"><font size="5">- By Nowoshire</font></font>'
 banner.TextColor3 = Color3.fromRGB(255, 255, 255)
 banner.TextScaled = true
 
@@ -167,12 +199,12 @@ ScrollingFrame.Position = UDim2.new(0, 0, 1, 0)
 ScrollingFrame.Size = UDim2.new(1, 0, 0.75, 0)
 ScrollingFrame.ZIndex = 0
 ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.XY
-ScrollingFrame.CanvasSize = UDim2.new(0, 0, 3, 0)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 2.4, 0)
 ScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(20, 20, 20)
 ScrollingFrame.ScrollBarThickness = 10
 
 local UIListLayout1 = Instance.new("UIListLayout", ScrollingFrame)
-UIListLayout1.Padding = UDim.new(0, 10)
+UIListLayout1.Padding = UDim.new(0, 8)
 UIListLayout1.FillDirection = Enum.FillDirection.Vertical
 UIListLayout1.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout1.SortOrder = Enum.SortOrder.Name
@@ -188,7 +220,7 @@ for _, parttype in pairs(game.Workspace.Obbies:FindFirstChild("Items", true):Get
 		parttypebutton.AnchorPoint = Vector2.new(0, 0.5)
 		parttypebutton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 		parttypebutton.BorderSizePixel = 0
-		parttypebutton.Size = UDim2.new(0.75, 0, 0.25, 0)
+		parttypebutton.Size = UDim2.new(0.75, 0, 0.18, 0)
 		parttypebutton.ZIndex = 0
 		parttypebutton.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
 		parttypebutton.LineHeight = 1.2
@@ -196,21 +228,21 @@ for _, parttype in pairs(game.Workspace.Obbies:FindFirstChild("Items", true):Get
 		parttypebutton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		parttypebutton.TextScaled = true
 
-		local color1 = Instance.new("Frame", parttypebutton)
-		color1.Name = "color"
-		color1.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
-		color1.BorderSizePixel = 0
-		color1.Position = UDim2.new(0, 0, 1, 0)
-		color1.Size = UDim2.new(1, 0, 0.15, 0)
-		color1.ZIndex = 0
+		local color2 = Instance.new("Frame", parttypebutton)
+		color2.Name = "color"
+		color2.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
+		color2.BorderSizePixel = 0
+		color2.Position = UDim2.new(0, 0, 1, 0)
+		color2.Size = UDim2.new(1, 0, 0.15, 0)
+		color2.ZIndex = 0
 
 		parttypebutton.Activated:Connect(function ()
 			if not table.find(DisabledPartTypes, parttypebutton.Name) then
 				table.insert(DisabledPartTypes, parttypebutton.Name)
-				color1.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+				color2.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
 			else
 				table.remove(DisabledPartTypes, table.find(DisabledPartTypes, parttypebutton.Name))
-				color1.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
+				color2.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
 			end
 		end)
 	end
@@ -225,7 +257,7 @@ title.Position = UDim2.new(0.5, 0, 0.05, 0)
 title.Size = UDim2.new(0.7, 0, 0.15, 0)
 title.ZIndex = 0
 title.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Bold)
-title.Text = "Part Types"
+title.Text = "Part Type Filter"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.TextScaled = true
 
@@ -420,99 +452,144 @@ expand.Activated:Connect(function()
 	end
 end)
 
--- Align Parts button
-alignb.Activated:Connect(function ()
-	color.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
-	-- Sanity Checks.
-	if typeof(tonumber(TextBox.Text)) ~= "number" 
-	or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
-
-	-- Return an editable obby
-	local function editable_obby (list)
-		local lp = game:GetService("Players").LocalPlayer
-		if (lp.PlayerGui:FindFirstChild("CurrentObby").Value == nil or lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name == lp.Name) and lp.PlayerGui:FindFirstChild("CanEdit").Value == true then
-			return lp.Name
-		elseif lp.PlayerGui:FindFirstChild("CanEdit").Value == false then
-			return nil
+-- Align Parts script
+local debounce = false
+local function align (mode)
+	if debounce == false then
+		debounce = true
+		if mode == 0 then
+			color.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
+		else
+			color0.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
 		end
-		for _, whitelisted in pairs(list) do
-			if whitelisted == lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name then
-				return lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name
+		-- Sanity Checks.
+		if typeof(tonumber(TextBox.Text)) ~= "number" 
+		or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
+
+		-- Return an editable obby
+		local function editable_obby (list)
+			if (lp.PlayerGui:FindFirstChild("CurrentObby").Value == nil or lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name == lp.Name) and lp.PlayerGui:FindFirstChild("CanEdit").Value == true then
+				return lp.Name
+			elseif lp.PlayerGui:FindFirstChild("CanEdit").Value == false then
+				return nil
 			end
-		end
-		return lp.Name
-	end
-
-	local obby = editable_obby(game:GetService("ReplicatedStorage").Events.GetWhitelists:InvokeServer())
-	if obby == nil then
-		color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
-		warn("::NAA:: -- No obby to align parts in.")
-		return
-	end
-
-	-- Align Parts in obby.
-	print("::NAA:: -- Aligning Parts in "..obby.."'s Obby.")
-	for _, PartTypeFolder in pairs(game.Workspace.Obbies[obby].Items:GetChildren()) do
-		if PartTypeFolder:IsA("Folder") and not table.find(DisabledPartTypes, PartTypeFolder.Name) then
-			local MovePartTable = {[1] = {}}
-			for _, part in pairs(PartTypeFolder:GetChildren()) do
-				if part:IsA("BasePart") then
-					if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
-					or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
-					or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
-						table.insert(MovePartTable[1], {
-							[1] = part,
-							[2] = CFrame.new(Vector3.new(
-								math.round(part.Position.X/TextBox.Text)*TextBox.Text,
-								math.round(part.Position.Y/TextBox.Text)*TextBox.Text,
-								math.round(part.Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part.Rotation.X), math.rad(part.Rotation.Y), math.rad(part.Rotation.Z)),
-							[3] = part.Size
-						})
-						if part.Name == "Moving Part" then -- Additional data for moving parts
-							table.insert(MovePartTable[1][#MovePartTable[1]], {
-								[1] = Vector3.new(
-									math.round(part.m1.Value.X/TextBox.Text)*TextBox.Text,
-									math.round(part.m1.Value.Y/TextBox.Text)*TextBox.Text,
-									math.round(part.m1.Value.Z/TextBox.Text)*TextBox.Text),
-								[2] = Vector3.new(
-									math.round(part.m2.Value.X/TextBox.Text)*TextBox.Text,
-									math.round(part.m2.Value.Y/TextBox.Text)*TextBox.Text,
-									math.round(part.m2.Value.Z/TextBox.Text)*TextBox.Text)
-							})
-						end
-					end
-				elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks and potentially other stuff, which are models.
-					table.insert(MovePartTable[1], {
-						[1] = part:FindFirstChild(part.Name),
-						[2] = CFrame.new(Vector3.new(
-							math.round(part:FindFirstChild(part.Name).Position.X/TextBox.Text)*TextBox.Text,
-							math.round(part:FindFirstChild(part.Name).Position.Y/TextBox.Text)*TextBox.Text,
-							math.round(part:FindFirstChild(part.Name).Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part:FindFirstChild(part.Name).Rotation.X), math.rad(part:FindFirstChild(part.Name).Rotation.Y), math.rad(part:FindFirstChild(part.Name).Rotation.Z)),
-						[3] = part:FindFirstChild(part.Name).Size
-					})
+			for _, whitelisted in pairs(list) do
+				if whitelisted == lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name then
+					return lp.PlayerGui:FindFirstChild("CurrentObby").Value.Name
 				end
 			end
+			return lp.Name
+		end
 
-			local function sses(pluralword) -- Truss(es)!!!
-				if string.lower(string.sub(pluralword, string.len(pluralword)-1)) == "ss" then
-					return pluralword.."es"
-				else
-					return pluralword
-				end 
-			end
-			
-			if #MovePartTable[1] > 0 then
-				
-				game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
-				print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
-			else
-				print("::NAA:: -- No misaligned "..sses(PartTypeFolder.Name).." to align")
+		local obby = editable_obby(game:GetService("ReplicatedStorage").Events.GetWhitelists:InvokeServer())
+		if obby == nil then
+			color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+			warn("::NAA:: -- No obby to align parts in.")
+			return
+		end
+
+		-- Align Parts in obby.
+		print("::NAA:: -- Aligning Parts in "..obby.."'s Obby.")
+
+		local selected = {}
+		-- Create table of selected parts.
+		for _, selection in pairs(lp.PlayerGui.Edit.LocalScript:GetChildren()) do
+			if selection.Name == "BoxSelection" and selection.Adornee ~= nil then
+				table.insert(selected, selection.Adornee)
 			end
 		end
+
+		local function selectedcheck (part)
+			if table.find(selected, part) then
+				return true
+			else
+				return false
+			end
+		end
+
+		if lp.PlayerGui.IsEditing.Value == true and #selected > 0 then
+			lp.PlayerGui.StopEditing:Fire()
+			lp.PlayerGui.LocalOutput:Fire("Exiting Edit Mode to align selected parts.", Color3.fromRGB(255, 120, 0))
+			repeat
+				task.wait()
+			until lp.PlayerGui.IsEditing.Value == false
+		end
+
+		for _, PartTypeFolder in pairs(game.Workspace.Obbies[obby].Items:GetChildren()) do
+			if PartTypeFolder:IsA("Folder") and not table.find(DisabledPartTypes, PartTypeFolder.Name) then
+				local MovePartTable = {[1] = {}}
+				for _, part in pairs(PartTypeFolder:GetChildren()) do
+					if part:IsA("BasePart") and mode == 0 or part:IsA("BasePart") and mode == 1 and selectedcheck(part) == true then
+						if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
+						or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
+						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
+							table.insert(MovePartTable[1], {
+								[1] = part,
+								[2] = CFrame.new(Vector3.new(
+									math.round(part.Position.X/TextBox.Text)*TextBox.Text,
+									math.round(part.Position.Y/TextBox.Text)*TextBox.Text,
+									math.round(part.Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part.Rotation.X), math.rad(part.Rotation.Y), math.rad(part.Rotation.Z)),
+								[3] = part.Size
+							})
+							if part.Name == "Moving Part" then -- Additional data for moving parts
+								table.insert(MovePartTable[1][#MovePartTable[1]], {
+									[1] = Vector3.new(
+										math.round(part.m1.Value.X/TextBox.Text)*TextBox.Text,
+										math.round(part.m1.Value.Y/TextBox.Text)*TextBox.Text,
+										math.round(part.m1.Value.Z/TextBox.Text)*TextBox.Text),
+									[2] = Vector3.new(
+										math.round(part.m2.Value.X/TextBox.Text)*TextBox.Text,
+										math.round(part.m2.Value.Y/TextBox.Text)*TextBox.Text,
+										math.round(part.m2.Value.Z/TextBox.Text)*TextBox.Text)
+								})
+							end
+						end
+					elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks and potentially other stuff, which are models.
+						table.insert(MovePartTable[1], {
+							[1] = part:FindFirstChild(part.Name),
+							[2] = CFrame.new(Vector3.new(
+								math.round(part:FindFirstChild(part.Name).Position.X/TextBox.Text)*TextBox.Text,
+								math.round(part:FindFirstChild(part.Name).Position.Y/TextBox.Text)*TextBox.Text,
+								math.round(part:FindFirstChild(part.Name).Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part:FindFirstChild(part.Name).Rotation.X), math.rad(part:FindFirstChild(part.Name).Rotation.Y), math.rad(part:FindFirstChild(part.Name).Rotation.Z)),
+							[3] = part:FindFirstChild(part.Name).Size
+						})
+					end
+				end
+
+				local function sses(pluralword) -- Truss(es)!!!
+					if string.lower(string.sub(pluralword, string.len(pluralword)-1)) == "ss" then
+						return pluralword.."es"
+					else
+						return pluralword
+					end 
+				end
+				
+				if #MovePartTable[1] > 0 then
+					game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
+					print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
+				else
+					print("::NAA:: -- No misaligned "..sses(PartTypeFolder.Name).." to align")
+				end
+			end
+		end
+		if mode == 0 then
+			color.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
+		else
+			color0.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
+		end
+		lp.PlayerGui.LocalOutput:Fire("Finished aligning parts!", Color3.fromRGB(0, 200, 0))
+		task.wait(1)
+		color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+		color0.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+		debounce = false
 	end
-	color.BackgroundColor3 = Color3.fromRGB(0, 220, 0)
-	task.wait(1)
-	color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
+end
+
+alignb.Activated:Connect(function ()
+	align(0)
+end)
+alignsb.Activated:Connect(function ()
+	align(1)
 end)
 
 -- TextBox input thing
