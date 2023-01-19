@@ -1,5 +1,6 @@
 print("::NAA:: -- Auto-Align by Nowoshire - No more .998s!")
 local lp = game:GetService("Players").LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- Create the GUIObjects
 local function sgparent()
 	local success = pcall(function()
@@ -462,9 +463,9 @@ local function align (mode)
 		else
 			color0.BackgroundColor3 = Color3.fromRGB(220, 220, 0)
 		end
+
 		-- Sanity Checks.
-		if typeof(tonumber(TextBox.Text)) ~= "number" 
-		or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
+		if typeof(tonumber(TextBox.Text)) ~= "number" or typeof(tonumber(TextBox.Text)) == "number" and tonumber(TextBox.Text) < 0.002 then return end
 
 		-- Return an editable obby
 		local function editable_obby (list)
@@ -481,7 +482,7 @@ local function align (mode)
 			return lp.Name
 		end
 
-		local obby = editable_obby(game:GetService("ReplicatedStorage").Events.GetWhitelists:InvokeServer())
+		local obby = editable_obby(ReplicatedStorage.Events.GetWhitelists:InvokeServer())
 		if obby == nil then
 			color.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
 			warn("::NAA:: -- No obby to align parts in.")
@@ -508,8 +509,8 @@ local function align (mode)
 		end
 
 		if lp.PlayerGui.IsEditing.Value == true and #selected > 0 then
-			lp.PlayerGui.StopEditing:Fire()
 			lp.PlayerGui.LocalOutput:Fire("Exiting Edit Mode to align selected parts.", Color3.fromRGB(255, 120, 0))
+			firesignal(lp.PlayerGui.Edit.MainButtons.BackButton.Activated)
 			repeat
 				task.wait()
 			until lp.PlayerGui.IsEditing.Value == false
@@ -565,7 +566,7 @@ local function align (mode)
 				end
 				
 				if #MovePartTable[1] > 0 then
-					game:GetService("ReplicatedStorage").Events.MoveObject:InvokeServer(unpack(MovePartTable))
+					ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
 					print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
 				else
 					print("::NAA:: -- No misaligned "..sses(PartTypeFolder.Name).." to align")
