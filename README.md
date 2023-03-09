@@ -1,4 +1,4 @@
-# Obby Creator Auto-Aligner
+# Obby Creator Misalignment Fixer
 Auto-Aligner is a QoL enhancement exploit for the Roblox experience, [Obby Creator](https://rblx.games/2913303231 "Roblox - Obby Creator"). This project is inspired by [Gabe616's OCPlus](https://github.com/Gabe616/OCPlus "GitHub").
 
 * Join the [OC+ Server](https://discord.gg/Mpw6b7vQfJ "Discord Invite"), as I probably won't be creating my own.
@@ -12,7 +12,7 @@ Simply run this one-liner!
 
 ## FaQ
 ### Q: Will I get banned for using this?
-Nope! [mario118118](https://rblx.name/29444141 "Roblox User Profile - mario118118") is actually fine with QoL/Enhancement exploits. However this doesn't mean the same applies outside of Obby Creator; and you may receive punishment for using exploits in other experiences.
+No (hopefully not at least). [mario118118](https://rblx.name/29444141 "Roblox User Profile - mario118118") is actually fine with QoL/Enhancement exploits. However this doesn't mean the same applies outside of Obby Creator; and you may receive punishment for using exploits in other experiences.
 
 ### Q: Who made this script?
 Me, Nowoshire.
