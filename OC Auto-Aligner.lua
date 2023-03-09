@@ -519,6 +519,7 @@ local function align (mode)
 		for _, PartTypeFolder in pairs(game.Workspace.Obbies[obby].Items:GetChildren()) do
 			if PartTypeFolder:IsA("Folder") and not table.find(DisabledPartTypes, PartTypeFolder.Name) then
 				local MovePartTable = {[1] = {}}
+				local Aligned = 0
 				for _, part in pairs(PartTypeFolder:GetChildren()) do
 					if part:IsA("BasePart") and mode == 0 or part:IsA("BasePart") and mode == 1 and selectedcheck(part) == true then
 						--[[if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
@@ -555,6 +556,12 @@ local function align (mode)
 							[3] = part:FindFirstChild(part.Name).Size
 						})
 					end
+					
+					if #MovePartTable[1]%10 == 0 then
+						ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
+						Aligned+=#MovePartTable[1]
+						MovePartTable[1] = {}
+					end
 				end
 
 				local function sses(pluralword) -- Truss(es)!!!
@@ -567,9 +574,9 @@ local function align (mode)
 				
 				if #MovePartTable[1] > 0 then
 					ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
-					print("::NAA:: -- Aligned "..#MovePartTable[1],sses(PartTypeFolder.Name))
+					print("::NAA:: -- Aligned "..Aligned,sses(PartTypeFolder.Name))
 				else
-					print("::NAA:: -- No misaligned "..sses(PartTypeFolder.Name).." to align")
+					print("::NAA:: -- No "..sses(PartTypeFolder.Name).." to align")
 				end
 			end
 		end
