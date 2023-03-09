@@ -164,7 +164,7 @@ banner.LayoutOrder = 0
 banner.RichText = true
 banner.Size = UDim2.new(0.7, 0, 0.25, 0)
 banner.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Bold)
-banner.Text = 'Auto Aligner<br/><font color="rgb(200,200,200)"><font size="5">- By Nowoshire</font></font>'
+banner.Text = 'Misalignment Fixer<br/><font color="rgb(200,200,200)"><font size="5">- By Nowoshire</font></font>'
 banner.TextColor3 = Color3.fromRGB(255, 255, 255)
 banner.TextScaled = true
 
