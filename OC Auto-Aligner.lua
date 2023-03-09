@@ -572,9 +572,9 @@ local function align (mode)
 					end 
 				end
 				
-				if #MovePartTable[1] > 0 then
+				if #MovePartTable[1] > 0 and Aligned > 0 then
 					ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
-					print("::NAA:: -- Aligned "..Aligned,sses(PartTypeFolder.Name))
+					print("::NAA:: -- Aligned "..Aligned+#MovePartTable[1],sses(PartTypeFolder.Name))
 				else
 					print("::NAA:: -- No "..sses(PartTypeFolder.Name).." to align")
 				end
