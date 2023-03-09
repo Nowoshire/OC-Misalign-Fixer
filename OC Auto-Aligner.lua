@@ -508,6 +508,8 @@ local function align (mode)
 			end
 		end
 
+		local spinningpartpos
+
 		if lp.PlayerGui.IsEditing.Value == true and #selected > 0 then
 			lp.PlayerGui.LocalOutput:Fire("Exiting Edit Mode to align selected parts.", Color3.fromRGB(255, 120, 0))
 			firesignal(lp.PlayerGui.Edit.MainButtons.BackButton.Activated)
@@ -522,17 +524,23 @@ local function align (mode)
 				local Aligned = 0
 				for _, part in pairs(PartTypeFolder:GetChildren()) do
 					if part:IsA("BasePart") and mode == 0 or part:IsA("BasePart") and mode == 1 and selectedcheck(part) == true then
-						--[[if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
+						if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
 						or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
-						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then]]
-							table.insert(MovePartTable[1], {
-								[1] = part,
-								[2] = CFrame.new(Vector3.new(
-									math.round(part.Position.X/TextBox.Text)*TextBox.Text,
-									math.round(part.Position.Y/TextBox.Text)*TextBox.Text,
-									math.round(part.Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part.Rotation.X), math.rad(part.Rotation.Y), math.rad(part.Rotation.Z)),
-								[3] = part.Size
-							})
+						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
+							if part.Name == "Spin Part" then
+								warn("Spin Parts are not supported yet.")
+								return
+							else
+								table.insert(MovePartTable[1], {
+									[1] = part,
+									[2] = CFrame.new(Vector3.new(
+										math.round(part.Position.X/TextBox.Text)*TextBox.Text,
+										math.round(part.Position.Y/TextBox.Text)*TextBox.Text,
+										math.round(part.Position.Z/TextBox.Text)*TextBox.Text))*CFrame.Angles(math.rad(part.Rotation.X), math.rad(part.Rotation.Y), math.rad(part.Rotation.Z)),
+									[3] = part.Size
+								})
+							end
+
 							if part.Name == "Moving Part" then -- Additional data for moving parts
 								table.insert(MovePartTable[1][#MovePartTable[1]], {
 									[1] = Vector3.new(
@@ -545,7 +553,7 @@ local function align (mode)
 										math.round(part.m2.Value.Z/TextBox.Text)*TextBox.Text)
 								})
 							end
-						--end
+						end
 					elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks and potentially other stuff, which are models.
 						table.insert(MovePartTable[1], {
 							[1] = part:FindFirstChild(part.Name),
@@ -557,11 +565,7 @@ local function align (mode)
 						})
 					end
 					
-					if #MovePartTable[1]%10 == 0 then
-						ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
-						Aligned+=#MovePartTable[1]
-						MovePartTable = {[1] = {}}
-					end
+					--ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
 				end
 
 				local function sses(pluralword) -- Truss(es)!!!
@@ -572,7 +576,7 @@ local function align (mode)
 					end 
 				end
 				
-				if #MovePartTable[1] > 0 and Aligned > 0 then
+				if #MovePartTable[1] > 0 then
 					ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
 					print("::NAA:: -- Aligned "..Aligned+#MovePartTable[1],sses(PartTypeFolder.Name))
 				else
