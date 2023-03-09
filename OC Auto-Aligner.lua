@@ -94,7 +94,7 @@ alignb.Position = UDim2.new(0, 0, 0.5, 0)
 alignb.Size = UDim2.new(1, 0, 0.9, 9)
 alignb.FontFace = Font.new("rbxasset://fonts/families/Jura.json", Enum.FontWeight.Medium)
 alignb.LineHeight = 1.2
-alignb.Text = "Align Parts"
+alignb.Text = "Align All"
 alignb.TextColor3 = Color3.fromRGB(255, 255, 255)
 alignb.TextScaled = true
 
@@ -521,9 +521,9 @@ local function align (mode)
 				local MovePartTable = {[1] = {}}
 				for _, part in pairs(PartTypeFolder:GetChildren()) do
 					if part:IsA("BasePart") and mode == 0 or part:IsA("BasePart") and mode == 1 and selectedcheck(part) == true then
-						if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
+						--[[if math.round(part.Position.X/TextBox.Text)*TextBox.Text ~= part.Position.X 
 						or math.round(part.Position.Y/TextBox.Text)*TextBox.Text ~= part.Position.Y
-						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then
+						or math.round(part.Position.Z/TextBox.Text)*TextBox.Text ~= part.Position.Z then]]
 							table.insert(MovePartTable[1], {
 								[1] = part,
 								[2] = CFrame.new(Vector3.new(
@@ -544,7 +544,7 @@ local function align (mode)
 										math.round(part.m2.Value.Z/TextBox.Text)*TextBox.Text)
 								})
 							end
-						end
+						--end
 					elseif part.Parent.Name == "Special" and part:IsA("Model") and part:FindFirstChild(part.Name) then -- Different handling for Special Cart Tracks and potentially other stuff, which are models.
 						table.insert(MovePartTable[1], {
 							[1] = part:FindFirstChild(part.Name),
