@@ -560,7 +560,7 @@ local function align (mode)
 					if #MovePartTable[1]%10 == 0 then
 						ReplicatedStorage.Events.MoveObject:InvokeServer(unpack(MovePartTable))
 						Aligned+=#MovePartTable[1]
-						MovePartTable[1] = {}
+						MovePartTable = {[1] = {}}
 					end
 				end
 
