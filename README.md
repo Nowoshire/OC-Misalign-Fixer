@@ -14,11 +14,8 @@ Simply run this one-liner!
 ### Q: Will I get banned for using this?
 No (hopefully not at least). [mario118118](https://rblx.name/29444141 "Roblox User Profile - mario118118") is actually fine with QoL/Enhancement exploits. However this doesn't mean the same applies outside of Obby Creator; and you may receive punishment for using exploits in other experiences.
 
-### Q: Who made this script?
-Me, Nowoshire.
-
 ### Q: The script doesn't work!
-Please ensure that you are using an executor that supports functions like ```gethui()```, if the issue is not related to an executor limitation please lmk on the OC+ server.
+Please ensure that you are using an executor that supports functions like ```gethui()```
 ## Credits
 #### Gabe616 (aka GABA)
 * Inspired me to create this project
